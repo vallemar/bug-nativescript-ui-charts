@@ -80,10 +80,8 @@ export default Vue.extend({
         viewModel.set('chartOptions', Object.assign(viewModel.get('chartOptions'), {
           series: [{
             name: 'Installation',
-
             data: [295, 295, 294, 289, 286, 285, 293, 294, 324, 309, 306, 278, 272, 264, 257, 258, 262, 295, 321, 342, 348, 332, 319, 308],
             color: '#01A781',
-
           },]
         }));
         chartView.setOptions(viewModel.get('chartOptions'));
