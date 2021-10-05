@@ -1,12 +1,19 @@
 const webpack = require("@nativescript/webpack");
 
 module.exports = (env) => {
-	webpack.init(env);
-
-	// Learn how to customize:
-	// https://docs.nativescript.org/webpack
-
-	return webpack.resolveConfig();
+  webpack.chainWebpack((config) => {
+    config.resolve.set("fallback", {
+      os: false,
+      tty: false,
+      assert: false,
+      stream: false,
+      https: false,
+      http: false,
+      url: false,
+      util: false,
+      zlib: false,
+    });
+  });
+  webpack.init(env);
+  return webpack.resolveConfig();
 };
-
-
