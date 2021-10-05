@@ -20,7 +20,7 @@
 <script lang="ts">
 import Vue from "nativescript-vue";
 import {fromObject} from '@nativescript/core/data/observable';
-import axios from "axios";
+import { Http } from '@nativescript/core'
 import {transformArchive} from "~/core/transform/archives";
 
 let chartView: any;
@@ -71,12 +71,10 @@ let viewModel = fromObject({
   }
 });
 
-
-
 export default Vue.extend({
   methods: {
     async chartViewLoaded(args: any) {
-      axios.get("https://api.esios.ree.es/archives/70/download_json?locale=es").then((result) => {
+      Http.getJSON("https://api.esios.ree.es/archives/70/download_json?locale=es").then((result) => {
         chartView = args.object;
         viewModel.set('loading', false);
         viewModel.set('chartOptions', Object.assign(viewModel.get('chartOptions'), {
